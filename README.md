@@ -1,64 +1,70 @@
 # Aigeon AI Zillow Working API
 
-## Project Description
+## Project Overview
 
-The **Aigeon AI Zillow Working API** is a Python-based server application designed to interact with the Zillow API through RapidAPI. This application provides a set of tools to access and retrieve real estate data from Zillow, enabling users to search for properties by various criteria such as property address, ZPID, Zillow URL, and more. It also supports advanced search functionalities, including autocomplete suggestions and detailed property listings based on user-defined filters.
+The **Aigeon AI Zillow Working API** is a Python-based server application designed to interact with the Zillow Working API. This project provides a set of tools to retrieve and manage real estate data from Zillow, offering functionalities such as fetching property details by address, ZPID, or Zillow URL, and performing property searches with various filters. The application leverages the FastMCP framework to streamline API interactions and ensure efficient data retrieval.
 
 ## Features Overview
 
-- **Property Search by Address**: Retrieve property details using a specific address.
-- **Property Search by ZPID**: Access property information using Zillow's unique property identifier (ZPID).
-- **Property Search by Zillow URL**: Fetch property details directly from a Zillow URL.
-- **Autocomplete Suggestions**: Provide search box autocomplete data for better user experience.
-- **Advanced Property Search**: Perform comprehensive property searches with multiple filtering options such as location, listing status, price range, and more.
+- **Property Lookup by Address**: Retrieve detailed property information using a specific property address.
+- **Property Lookup by ZPID**: Access property details using the unique Zillow Property ID (ZPID).
+- **Property Lookup by Zillow URL**: Fetch property data directly from a Zillow URL.
+- **Autocomplete Suggestions**: Obtain search box autocomplete data from Zillow for enhanced user experience.
+- **Advanced Property Search**: Conduct comprehensive property searches with multiple filters, including location, listing status, price range, and more.
 
 ## Main Features and Functionality
 
-1. **By Property Address**: 
-   - Allows users to input a property address and retrieve its corresponding ZPID and detailed property information with high accuracy.
+1. **Property Lookup by Address**:
+   - Allows users to input a property address to retrieve its corresponding ZPID and detailed property information.
+   - Ensures high accuracy in matching addresses to property data.
 
-2. **By ZPID**:
-   - Enables users to fetch detailed property data using the Zillow Property ID (ZPID). This is useful for users who have the ZPID from a Zillow URL.
+2. **Property Lookup by ZPID**:
+   - Enables users to fetch property details using the ZPID, a unique identifier found in Zillow URLs.
+   - Provides a fallback to address-based lookup if the ZPID is unknown.
 
-3. **By Zillow URL**:
-   - Users can input a Zillow URL to obtain property details directly, simplifying the process of accessing property information.
+3. **Property Lookup by Zillow URL**:
+   - Facilitates the retrieval of property information using a direct Zillow URL.
+   - Simplifies the process of obtaining property data by leveraging existing Zillow links.
 
-4. **Autocomplete**:
-   - Provides suggestions for search queries, enhancing user experience by offering relevant autocomplete options based on partial input.
+4. **Autocomplete Suggestions**:
+   - Offers real-time autocomplete suggestions for search queries, enhancing the user interface and search efficiency.
+   - Utilizes Zillow's autocomplete API to provide relevant suggestions based on user input.
 
-5. **Search By Address**:
-   - A sophisticated search tool that allows users to search for properties using various criteria such as location, listing status (For Sale, For Rent, Sold), price range, number of bedrooms, and more. This feature supports pagination and sorting to refine search results.
+5. **Advanced Property Search**:
+   - Supports detailed property searches with a wide array of filters, including:
+     - Location (address, neighborhood, city, ZIP code)
+     - Listing status (For Sale, For Rent, Sold)
+     - Price range and monthly payment options
+     - Number of bedrooms and bathrooms
+     - Home type and space preferences
+     - HOA fees and listing types
+   - Allows users to sort search results by various criteria, such as price, newest listings, and more.
 
-## API Endpoints / Main Functions Description
+## Main Functions Description
 
-### 1. `by_property_address(propertyaddress: str) -> dict`
-- **Description**: Retrieves property details using a given property address.
-- **Input**: A string representing the property address (e.g., "3 W Forest Dr, Rochester, NY 14624").
+### `by_property_address(propertyaddress: str) -> dict`
+- **Purpose**: Retrieve property details using a specific property address.
+- **Input**: A string representing the property address.
 - **Output**: A dictionary containing detailed property information.
 
-### 2. `by_zpid(zpid: str) -> dict`
-- **Description**: Fetches property details using the Zillow Property ID (ZPID).
-- **Input**: A string representing the ZPID (e.g., "30907787").
-- **Output**: A dictionary with property details.
+### `by_zpid(zpid: str) -> dict`
+- **Purpose**: Fetch property details using the Zillow Property ID (ZPID).
+- **Input**: A string representing the ZPID.
+- **Output**: A dictionary containing detailed property information.
 
-### 3. `by_zillow_url(url: str) -> dict`
-- **Description**: Obtains property information from a Zillow URL.
-- **Input**: A string representing the Zillow URL (e.g., "https://www.zillow.com/homedetails/3-W-Forest-Dr-Rochester-NY-14624/30907787_zpid/").
-- **Output**: A dictionary containing property details.
+### `by_zillow_url(url: str) -> dict`
+- **Purpose**: Obtain property data using a direct Zillow URL.
+- **Input**: A string representing the Zillow URL.
+- **Output**: A dictionary containing detailed property information.
 
-### 4. `autocomplete(query: str) -> dict`
-- **Description**: Provides autocomplete suggestions for search queries.
+### `autocomplete(query: str) -> dict`
+- **Purpose**: Provide autocomplete suggestions for search queries.
 - **Input**: A string representing the search query.
-- **Output**: A dictionary with autocomplete suggestions.
+- **Output**: A dictionary containing autocomplete suggestions.
 
-### 5. `search_byaddress(...) -> dict`
-- **Description**: Performs an advanced search for properties based on multiple criteria.
-- **Inputs**: 
-  - `location`: Address, neighborhood, city, or ZIP code.
-  - `listingStatus`: Type of property data (For Sale, For Rent, Sold).
-  - `page`: Pagination for results.
-  - `sortOrder`: Sorting preference for search results.
-  - Additional filters such as `listPriceRange`, `monthlyPayment`, `bed_min`, `bed_max`, etc.
-- **Output**: A dictionary with search results containing property listings.
+### `search_byaddress(...) -> dict`
+- **Purpose**: Conduct an advanced property search with multiple filters.
+- **Input**: Various parameters including location, listing status, price range, and more.
+- **Output**: A dictionary containing search results based on the provided filters.
 
-This application leverages the power of the Zillow API to provide comprehensive real estate data, making it a valuable tool for developers and users interested in accessing property information programmatically.
+This project is designed to facilitate seamless interaction with Zillow's real estate data, providing users with powerful tools to access and manage property information efficiently.
